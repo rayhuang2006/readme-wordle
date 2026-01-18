@@ -1,5 +1,16 @@
 {
     "answer": "SMART",
-    "guesses": [],
+    "guesses": [
+        {
+            "word": "APPLE",
+            "result": [
+                1,
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
     "status": "playing"
 }
