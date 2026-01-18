@@ -19,6 +19,7 @@ def save_state(state):
         json.dump(state, f, indent=4)
 
 def update_readme():
+
     if not os.path.exists(README_FILE):
         return
 
@@ -26,15 +27,18 @@ def update_readme():
         content = f.read()
 
     timestamp = int(time.time())
+    
+    repo_url = "https://raw.githubusercontent.com/rayhuang2006/readme-wordle/main/wordle_status.png"
+    
     new_content = re.sub(
-        r"\!\[Wordle Status\]\(\./wordle_status\.png.*?\)",
-        f"![Wordle Status](./wordle_status.png?v={timestamp})",
+        r"\!\[Wordle Status\]\(.*?\)",
+        f"![Wordle Status]({repo_url}?v={timestamp})",
         content
     )
 
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(new_content)
-    print("README 已更新 (Cache busted)")
+    print("README 已更新 (使用 Raw URL 強制刷新)")
 
 def main():
     issue_title = os.environ.get("ISSUE_TITLE", "")
