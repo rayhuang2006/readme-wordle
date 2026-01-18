@@ -1,56 +1,16 @@
 {
-    "answer": "LINUX",
+    "answer": "SMART",
     "guesses": [
         {
-            "word": "APPLE",
+            "word": "AAAAA",
             "result": [
                 0,
                 0,
-                0,
-                1,
-                0
-            ]
-        },
-        {
-            "word": "LAUGH",
-            "result": [
                 2,
-                0,
-                1,
                 0,
                 0
-            ]
-        },
-        {
-            "word": "LLLLL",
-            "result": [
-                2,
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "word": "ABCDE",
-            "result": [
-                0,
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "word": "LINUX",
-            "result": [
-                2,
-                2,
-                2,
-                2,
-                2
             ]
         }
     ],
-    "status": "won"
+    "status": "playing"
 }
