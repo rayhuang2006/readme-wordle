@@ -20,6 +20,16 @@
                 0,
                 0
             ]
+        },
+        {
+            "word": "START",
+            "result": [
+                2,
+                0,
+                2,
+                2,
+                2
+            ]
         }
     ],
     "status": "playing"
