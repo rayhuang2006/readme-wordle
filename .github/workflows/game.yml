@@ -1,0 +1,63 @@
+name: Wordle Game Logic
+
+on:
+  issues:
+    types: [opened] 
+
+jobs:
+  play-wordle:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, 'guess:') 
+    
+    permissions:
+      contents: write 
+      issues: write  
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install Pillow
+
+      - name: Run Game Logic
+        env:
+          
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_OWNER: ${{ github.repository_owner }}
+        run: |
+          # 這裡我們要稍微修改 main.py 讓它能讀取環境變數
+          # 但為了測試，我們先跑原本的，確認 Action 能動
+          python main.py
+
+      - name: Commit and Push Image
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add wordle_status.png
+          # 如果圖片有變才 commit
+          git commit -m "Update Wordle Status via Issue #${{ github.event.issue.number }}" || exit 0
+          git push
+
+      - name: Reply to Issue
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            猜測已收到！結果已更新到 README。
+            ![Wordle Status](https://github.com/${{ github.repository }}/blob/master/wordle_status.png?raw=true)
+            
+            (這是一個測試回應)
+          
+      - name: Close Issue
+        uses: peter-evans/close-issue@v3
+        with:
+          issue-number: ${{ github.event.issue.number }}
