@@ -1,12 +1,16 @@
 import os
 import json
 import re
+import time
 from wordle import check_guess
 from drawer import draw_game_state
 
 STATE_FILE = "state.json"
+README_FILE = "README.md"
 
 def load_state():
+    if not os.path.exists(STATE_FILE):
+        return {"answer": "SMART", "guesses": [], "status": "playing"}
     with open(STATE_FILE, "r") as f:
         return json.load(f)
 
@@ -14,46 +18,58 @@ def save_state(state):
     with open(STATE_FILE, "w") as f:
         json.dump(state, f, indent=4)
 
+def update_readme():
+    if not os.path.exists(README_FILE):
+        return
+
+    with open(README_FILE, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    timestamp = int(time.time())
+    new_content = re.sub(
+        r"\!\[Wordle Status\]\(\./wordle_status\.png.*?\)",
+        f"![Wordle Status](./wordle_status.png?v={timestamp})",
+        content
+    )
+
+    with open(README_FILE, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    print("README 已更新 (Cache busted)")
+
 def main():
     issue_title = os.environ.get("ISSUE_TITLE", "")
-    print(f"收到輸入: {issue_title}")
-
     match = re.search(r"guess:\s*([a-zA-Z]{5})", issue_title, re.IGNORECASE)
     
     if not match:
-        print("格式錯誤或找不到 5 個字母的猜測。")
+        print("未偵測到有效猜測，僅重繪圖片。")
         state = load_state()
         draw_game_state(state)
         return
 
     guess_word = match.group(1).upper()
-    print(f"玩家猜測: {guess_word}")
-
     state = load_state()
     target_word = state["answer"]
 
     if state["status"] != "playing":
-        print("遊戲已經結束！")
         draw_game_state(state)
         return
 
     result = check_guess(guess_word, target_word)
     
-    new_record = {
+    state["guesses"].append({
         "word": guess_word,
         "result": result
-    }
-    state["guesses"].append(new_record)
+    })
 
     if guess_word == target_word:
         state["status"] = "won"
-        print("恭喜贏了！")
     elif len(state["guesses"]) >= 6:
         state["status"] = "lost"
-        print("很遺憾，輸了...")
 
     save_state(state)
     draw_game_state(state)
+    
+    update_readme()
 
 if __name__ == "__main__":
     main()
