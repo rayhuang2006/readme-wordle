@@ -20,23 +20,24 @@ def save_state(state):
         json.dump(state, f, indent=4)
 
 def update_readme_from_template():
-
     if not os.path.exists(TEMPLATE_FILE):
-        print("錯誤：找不到樣板檔 README_TEMPLATE.md")
+        print("錯誤：找不到樣板檔")
         return
 
     with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
         template_content = f.read()
 
     timestamp = int(time.time())
-    image_markdown = f"![Wordle Status](./wordle_status.png?v={timestamp})"
+
+    repo_url = "https://raw.githubusercontent.com/rayhuang2006/readme-wordle/main/wordle_status.png"
+    image_markdown = f"![Wordle Status]({repo_url}?v={timestamp})"
 
     new_content = template_content.replace("{{WORDLE_STATUS}}", image_markdown)
 
     with open(README_FILE, "w", encoding="utf-8") as f:
         f.write(new_content)
     
-    print(f"README 已根據樣板更新，時間戳記: {timestamp}")
+    print(f"README 已根據樣板更新 (使用 Raw URL)，時間戳記: {timestamp}")
 
 def main():
     issue_title = os.environ.get("ISSUE_TITLE", "")
