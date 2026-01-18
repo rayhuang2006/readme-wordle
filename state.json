@@ -1,16 +1,16 @@
 {
-    "answer": "GHOST",
+    "answer": "LINUX",
     "guesses": [
         {
-            "word": "GHOST",
+            "word": "APPLE",
             "result": [
-                2,
-                2,
-                2,
-                2,
-                2
+                0,
+                0,
+                0,
+                1,
+                0
             ]
         }
     ],
-    "status": "won"
+    "status": "playing"
 }
