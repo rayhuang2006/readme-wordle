@@ -3,8 +3,8 @@
 Welcome to my profile! This is a fully functional **Wordle** game running entirely on **GitHub Actions**.
 The target word is a **5-letter** English word. Can you guess it?
 
-###  Current Board
-![Wordle Status](https://raw.githubusercontent.com/rayhuang2006/readme-wordle/main/wordle_status.png?v=1768730777)
+### Current Board
+![Wordle Status](./wordle_status.png?v=1768731345)
 
 ---
 
@@ -25,6 +25,6 @@ The target word is a **5-letter** English word. Can you guess it?
 * **Refresh Rate:** Updates ~30s after interaction
 
 ### Rules
-*  **Green:** Correct letter in the correct spot.
-*  **Yellow:** Correct letter but in the wrong spot.
-*  **Gray:** The letter is not in the word.
+* **Green:** Correct letter in the correct spot.
+* **Yellow:** Correct letter but in the wrong spot.
+* **Gray:** The letter is not in the word.
