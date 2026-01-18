@@ -10,6 +10,16 @@
                 1,
                 0
             ]
+        },
+        {
+            "word": "LAUGH",
+            "result": [
+                2,
+                0,
+                1,
+                0,
+                0
+            ]
         }
     ],
     "status": "playing"
