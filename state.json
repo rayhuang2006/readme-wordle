@@ -1,66 +1,16 @@
 {
-    "answer": "SMART",
+    "answer": "GHOST",
     "guesses": [
         {
-            "word": "APPLE",
-            "result": [
-                1,
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "word": "STILL",
+            "word": "GHOST",
             "result": [
                 2,
-                1,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "word": "START",
-            "result": [
                 2,
-                0,
                 2,
                 2,
                 2
-            ]
-        },
-        {
-            "word": "SHART",
-            "result": [
-                2,
-                0,
-                2,
-                2,
-                2
-            ]
-        },
-        {
-            "word": "SHAIT",
-            "result": [
-                2,
-                0,
-                2,
-                0,
-                2
-            ]
-        },
-        {
-            "word": "WORDS",
-            "result": [
-                0,
-                0,
-                1,
-                0,
-                1
             ]
         }
     ],
-    "status": "lost"
+    "status": "won"
 }
