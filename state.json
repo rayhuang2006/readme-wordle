@@ -30,6 +30,16 @@
                 2,
                 2
             ]
+        },
+        {
+            "word": "SHART",
+            "result": [
+                2,
+                0,
+                2,
+                2,
+                2
+            ]
         }
     ],
     "status": "playing"
