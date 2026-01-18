@@ -40,7 +40,17 @@
                 0,
                 0
             ]
+        },
+        {
+            "word": "LINUX",
+            "result": [
+                2,
+                2,
+                2,
+                2,
+                2
+            ]
         }
     ],
-    "status": "playing"
+    "status": "won"
 }
