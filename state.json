@@ -10,6 +10,16 @@
                 0,
                 0
             ]
+        },
+        {
+            "word": "LARES",
+            "result": [
+                0,
+                1,
+                1,
+                0,
+                1
+            ]
         }
     ],
     "status": "playing"
